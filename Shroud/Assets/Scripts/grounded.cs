@@ -28,6 +28,11 @@ public class grounded : MonoBehaviour
         {
             Player.GetComponent<playerScript>().isGrounded = true;
         }
+        // Calling the collision logic for the object that was collided with
+        if (collision.collider.gameObject.GetComponent<onCollision>())
+        {
+            collision.collider.gameObject.GetComponent<onCollision>().OnCollideStart();
+        }
     }
 
     //Checks to see if the player is in the air
@@ -36,6 +41,11 @@ public class grounded : MonoBehaviour
         if (collision.collider.tag == "Platform")
         {
             Player.GetComponent<playerScript>().isGrounded = false;
+        }
+        // Calling the collision logic for the object that was collided with
+        if (collision.collider.gameObject.GetComponent<onCollision>())
+        {
+            collision.collider.gameObject.GetComponent<onCollision>().OnCollideEnd();
         }
     }
 }
