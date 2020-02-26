@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class playerScript : MonoBehaviour
 {
-    const float SPEED = 2f;   //A constant for player speed
-    const float JUMP_HEIGHT = 10f;  //A constant for jump height
+    const float SPEED = 5f;   //A constant for player speed
+    const float JUMP_HEIGHT = 7f;  //A constant for jump height
 
     public bool isGrounded = false;   //A bool to track whether or not the player is in the air
 
