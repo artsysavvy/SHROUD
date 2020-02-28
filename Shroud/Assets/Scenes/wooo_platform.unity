@@ -121,6 +121,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &12697270
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +343,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1670206033}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> 72ac22a86ad601b7fa774310382d8215dae78726
 --- !u!1001 &462977354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1989,6 +1992,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 914849063}
     m_Modifications:
+    - target: {fileID: 1967805077829771936, guid: 566779340b602f54881338b90d41c5a9,
+        type: 3}
+      propertyPath: doLightUp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1967805077829771940, guid: 566779340b602f54881338b90d41c5a9,
         type: 3}
       propertyPath: m_Sprite
@@ -2075,6 +2083,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 8975306256724967952, guid: 566779340b602f54881338b90d41c5a9,
+        type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975306256724967952, guid: 566779340b602f54881338b90d41c5a9,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566779340b602f54881338b90d41c5a9, type: 3}
 --- !u!1001 &4192359087498496702
@@ -2122,7 +2140,11 @@ PrefabInstance:
     - target: {fileID: 4192359087871317876, guid: cb9a5081ae0e02742a8f8858856cc935,
         type: 3}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 3
+=======
+      value: 14
+>>>>>>> 72ac22a86ad601b7fa774310382d8215dae78726
       objectReference: {fileID: 0}
     - target: {fileID: 4192359087871317876, guid: cb9a5081ae0e02742a8f8858856cc935,
         type: 3}
