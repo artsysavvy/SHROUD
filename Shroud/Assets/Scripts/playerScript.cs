@@ -9,10 +9,12 @@ public class playerScript : MonoBehaviour
 
     public bool isGrounded = false;   //A bool to track whether or not the player is in the air
 
+    private SpriteRenderer SR; 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        SR = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -32,9 +34,26 @@ public class playerScript : MonoBehaviour
 
 
         //Checks if space or w is pressed and uses the rigid body to jump
-        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && isGrounded == true)
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded == true)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, JUMP_HEIGHT), ForceMode2D.Impulse);
         }
+
+        //Code to Flip Sprite Based on Direction
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (SR != null)
+            {
+                SR.flipX = true;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (SR != null)
+            {
+                SR.flipX = false;
+            }
+        }
+
     }
 }
