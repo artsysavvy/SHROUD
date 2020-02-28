@@ -43,3 +43,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1707754489
+    locked: 0
+  - name: Parallax
+    uniqueID: 1426048945
+    locked: 0
+  - name: Platforms
+    uniqueID: 2873429349
+    locked: 0
+  - name: Player
+    uniqueID: 2641914701
+    locked: 0
