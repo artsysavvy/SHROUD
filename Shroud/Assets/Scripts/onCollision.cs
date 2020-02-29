@@ -16,6 +16,11 @@ public class onCollision : MonoBehaviour
 
     private bool increaseLightIntensity = false;
 
+    public void OnAwake()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Resources/Platform_Blue.png");
+    }
+
     public void OnCollideStart()
     {
         if (doLightUp)
