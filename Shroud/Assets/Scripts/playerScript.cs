@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class playerScript : MonoBehaviour
@@ -9,12 +10,14 @@ public class playerScript : MonoBehaviour
 
     public bool isGrounded = false;   //A bool to track whether or not the player is in the air
 
-    private SpriteRenderer SR; 
+    private SpriteRenderer SR;
+    private AudioSource footsteps;
 
     // Start is called before the first frame update
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
+        footsteps = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,13 @@ public class playerScript : MonoBehaviour
             {
                 SR.flipX = true;
             }
+
+            //If not already playing
+            if (!footsteps.isPlaying)
+            {
+                //Play footsteps effect
+                footsteps.Play();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -53,6 +63,19 @@ public class playerScript : MonoBehaviour
             {
                 SR.flipX = false;
             }
+
+            //If not already playing
+            if (!footsteps.isPlaying)
+            {
+                //Plays walking sound
+                footsteps.Play();
+            }
+        }
+
+        else
+        {
+            //Stop playing sound
+            footsteps.Stop();
         }
 
     }

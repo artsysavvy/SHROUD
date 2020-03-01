@@ -82,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1967805077829771939
@@ -145,6 +145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doLightUp: 1
+  land1: {fileID: 4687806504380472659, guid: 112d56946b700994ba1cf1bca1353e1f, type: 3}
+  land2: {fileID: 698380532792361097, guid: 78a3a761e291d814dba1f2a231940900, type: 3}
+  land3: {fileID: 6023430777158499892, guid: 2b43a052bd077b84c9769fb9f45c0114, type: 3}
 --- !u!108 &8975306256724967952
 Light:
   m_ObjectHideFlags: 0
