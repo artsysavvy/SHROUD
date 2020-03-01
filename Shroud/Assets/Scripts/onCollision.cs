@@ -18,7 +18,7 @@ public class onCollision : MonoBehaviour
 
     public void OnAwake()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Resources/Platform_Blue.png");
+        //gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Assets/Sprites/Platform_Blue.png");
     }
 
     public void OnCollideStart()
