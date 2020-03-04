@@ -9,6 +9,7 @@ public class playerScript : MonoBehaviour
     const float JUMP_HEIGHT = 7f;  //A constant for jump height
 
     public bool isGrounded = false;   //A bool to track whether or not the player is in the air
+    public Vector3 startingPosition;  //The Starting Position of the Player for the Level
 
     private SpriteRenderer SR;
     private AudioSource footsteps;
@@ -16,6 +17,7 @@ public class playerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startingPosition = transform.position;
         SR = GetComponent<SpriteRenderer>();
         footsteps = gameObject.GetComponent<AudioSource>();
     }
@@ -70,6 +72,12 @@ public class playerScript : MonoBehaviour
                 //Plays walking sound
                 footsteps.Play();
             }
+        }
+
+        //Code to check if the player has fallen.
+        if (transform.position.y <= -10)
+        {
+            transform.position = startingPosition;
         }
 
         else
