@@ -59,19 +59,19 @@ public class onCollision : MonoBehaviour
 
     public void Update()
     {
-        Light light = gameObject.GetComponent<Light>();
+        Light light = gameObject.GetComponentInChildren<Light>();
         if (increaseLightIntensity)
         {
-            if (light.range < 10)
+            if (light.intensity < 1)
             {
-                light.range += 0.1f;
+                light.intensity += 0.02f;
             }
         }
         else
         {
-            if (light.range > 0)
+            if (light.intensity > 0)
             {
-                light.range -= 0.25f;
+                light.intensity -= 0.02f;
             }
         }
     }
