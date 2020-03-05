@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class lightGlobals
+{
+    public static bool enableSpotlights;
+}
+
 public class lightManagement : MonoBehaviour
 {
     private const float TIME_UNTIL_DARKNESS = 3;

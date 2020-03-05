@@ -16,9 +16,11 @@ public class onCollision : MonoBehaviour
 
     private bool increaseLightIntensity = false;
 
-    public void OnAwake()
+    public void Start()
     {
-        //gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Assets/Sprites/Platform_Blue.png");
+        Light spotlight = gameObject.GetComponentInChildren<Light>();
+        spotlight.spotAngle = 100 * gameObject.transform.localScale.x;
+        spotlight.range = 10 * gameObject.transform.localScale.x;
     }
 
     public void OnCollideStart()
