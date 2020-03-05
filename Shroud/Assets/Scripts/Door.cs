@@ -40,6 +40,15 @@ public class Door : MonoBehaviour
                 changeScene = true;
             }
         }
+        // Updating status of lighting
+        if (LightGlobals.levelStarted)
+        {
+            gameObject.GetComponentInChildren<Light>().intensity = 0.5f;
+        }
+        else
+        {
+            gameObject.GetComponentInChildren<Light>().intensity = 0;
+        }
     }
 
     // Methods that deal with the player colliding with the door

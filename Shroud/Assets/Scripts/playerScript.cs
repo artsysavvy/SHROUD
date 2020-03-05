@@ -25,7 +25,18 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();           
+        
+        // Updating status of lighting
+        if (LightGlobals.levelStarted)
+        {
+            gameObject.GetComponentInChildren<Light>().intensity = 1.5f;
+            // Only allowing player movement once the level has started
+            Movement();
+        }
+        else
+        {
+            gameObject.GetComponentInChildren<Light>().intensity = 0;
+        }
     }
 
     /// <summary>
