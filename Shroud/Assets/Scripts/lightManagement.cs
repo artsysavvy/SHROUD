@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class LightGlobals
+{
+    public static bool levelStarted;
+}
+
 public class lightManagement : MonoBehaviour
 {
     private const float TIME_UNTIL_DARKNESS = 3;
@@ -10,6 +15,7 @@ public class lightManagement : MonoBehaviour
     private void Awake()
     {
         RenderSettings.ambientLight = Color.white;
+        LightGlobals.levelStarted = false;
     }
 
     private void Update()
@@ -23,6 +29,10 @@ public class lightManagement : MonoBehaviour
             {
                 Color oldColor = RenderSettings.ambientLight;
                 RenderSettings.ambientLight = new Color(oldColor.r - 0.01f, oldColor.g - 0.01f, oldColor.b - 0.01f);
+            }
+            else
+            {
+                LightGlobals.levelStarted = true;
             }
         }
     }
