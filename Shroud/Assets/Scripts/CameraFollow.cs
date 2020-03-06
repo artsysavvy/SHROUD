@@ -8,6 +8,10 @@ public class CameraFollow : MonoBehaviour
     public GameObject player;
     public GameObject door;
 
+    private bool waitedOnLevelLoad;
+    private float levelLoadWaitTimer;
+    private const float LEVEL_LOAD_TIME = 1.5f;
+
     private bool doorWaitStart;
     private float doorWaitTimer;
     private const float DOOR_WAIT_TIME = 1;
@@ -20,6 +24,7 @@ public class CameraFollow : MonoBehaviour
         LightGlobals.doorShown = false;
         doorWaitStart = false;
         LightGlobals.playerShown = false;
+        waitedOnLevelLoad = false;
     }
 
     // Update is called once per frame
@@ -27,7 +32,15 @@ public class CameraFollow : MonoBehaviour
     {
         Camera mainCamera = gameObject.GetComponent<Camera>();
 
-        if (!LightGlobals.doorShown)
+        if (!waitedOnLevelLoad)
+        {
+            if (levelLoadWaitTimer >= LEVEL_LOAD_TIME)
+            {
+                waitedOnLevelLoad = true;
+            }
+            levelLoadWaitTimer += Time.deltaTime;
+        }
+        else if (!LightGlobals.doorShown)
         {
             // Checking if the door is not in the bounds of the screen
             if (door.transform.position.x > mainCamera.transform.position.x + 12)
