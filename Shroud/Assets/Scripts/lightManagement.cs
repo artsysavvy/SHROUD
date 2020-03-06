@@ -5,6 +5,7 @@ using UnityEngine;
 public static class LightGlobals
 {
     public static bool levelStarted;
+    public static bool doorShown;
 }
 
 public class lightManagement : MonoBehaviour
