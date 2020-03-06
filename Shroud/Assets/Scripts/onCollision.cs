@@ -18,9 +18,12 @@ public class onCollision : MonoBehaviour
 
     public void Start()
     {
-        Light spotlight = gameObject.GetComponentInChildren<Light>();
-        spotlight.spotAngle = 100 * gameObject.transform.localScale.x;
-        spotlight.range = 10 * gameObject.transform.localScale.x;
+        if (doLightUp)
+        {
+            Light spotlight = gameObject.GetComponentInChildren<Light>();
+            spotlight.spotAngle = 100 * gameObject.transform.localScale.x;
+            spotlight.range = 10 * gameObject.transform.localScale.x;
+        }
     }
 
     public void OnCollideStart()
@@ -61,19 +64,22 @@ public class onCollision : MonoBehaviour
 
     public void Update()
     {
-        Light light = gameObject.GetComponentInChildren<Light>();
-        if (increaseLightIntensity)
+        if (doLightUp)
         {
-            if (light.intensity < 1)
+            Light light = gameObject.GetComponentInChildren<Light>();
+            if (increaseLightIntensity)
             {
-                light.intensity += 0.02f;
+                if (light.intensity < 1)
+                {
+                    light.intensity += 0.02f;
+                }
             }
-        }
-        else
-        {
-            if (light.intensity > 0)
+            else
             {
-                light.intensity -= 0.02f;
+                if (light.intensity > 0)
+                {
+                    light.intensity -= 0.02f;
+                }
             }
         }
     }

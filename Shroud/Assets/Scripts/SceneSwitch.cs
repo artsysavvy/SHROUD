@@ -17,17 +17,27 @@ public class SceneSwitch : MonoBehaviour
     void Update()
     {
 
-            if (nextLevel > 1)
-            {
-                if (Door.instance.changeScene)
-                {
-                    SceneManager.LoadScene(nextLevel);
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (nextLevel > 1)
+        {
+            if (Door.instance.changeScene)
             {
                 SceneManager.LoadScene(nextLevel);
             }
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(nextLevel);
+            }
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
 
     }
 }
