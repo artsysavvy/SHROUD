@@ -14,6 +14,18 @@ public class playerScript : MonoBehaviour
     private SpriteRenderer SR;
     private AudioSource footsteps;
 
+    PlayerStates currentState;
+
+    //animationStates
+    enum PlayerStates
+    {
+        Idle,
+        RunningRight,
+        RunningLeft,
+        JumpRight,
+        JumpLeft
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -97,5 +109,10 @@ public class playerScript : MonoBehaviour
             footsteps.Stop();
         }
 
+    }
+
+    void changeStates(state)
+    {
+        
     }
 }
