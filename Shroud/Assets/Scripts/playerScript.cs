@@ -110,9 +110,10 @@ public class playerScript : MonoBehaviour
         }
 
     }
-
+    /*
     void changeStates(state)
     {
         
     }
+    */
 }
