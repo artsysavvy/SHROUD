@@ -12,7 +12,7 @@ public class playerScript : MonoBehaviour
     public Vector3 startingPosition;  //The Starting Position of the Player for the Level
 
     private SpriteRenderer SR;
-    private AudioSource footsteps;
+    public AudioSource footsteps;
 
     PlayerStates currentState;
 
@@ -31,7 +31,6 @@ public class playerScript : MonoBehaviour
     {
         startingPosition = transform.position;
         SR = GetComponent<SpriteRenderer>();
-        footsteps = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -74,13 +73,6 @@ public class playerScript : MonoBehaviour
             {
                 SR.flipX = true;
             }
-
-            //If not already playing
-            if (!footsteps.isPlaying)
-            {
-                //Play footsteps effect
-                footsteps.Play();
-            }
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -88,13 +80,19 @@ public class playerScript : MonoBehaviour
             {
                 SR.flipX = false;
             }
+        }
 
-            //If not already playing
+        // Footstep code
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        {
             if (!footsteps.isPlaying)
             {
-                //Plays walking sound
                 footsteps.Play();
             }
+        }
+        else
+        {
+            footsteps.Stop();
         }
 
         //Code to check if the player has fallen.
