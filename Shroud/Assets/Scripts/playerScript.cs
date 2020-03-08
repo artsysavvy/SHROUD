@@ -14,23 +14,19 @@ public class playerScript : MonoBehaviour
     private SpriteRenderer SR;
     public AudioSource footsteps;
 
-    PlayerStates currentState;
-
     //animationStates
-    enum PlayerStates
-    {
-        Idle,
-        RunningRight,
-        RunningLeft,
-        JumpRight,
-        JumpLeft
-    }
+    Animator animator;
+    const int STATE_IDLE = 0;
+    const int STATE_RUN = 1;
+    const int STATE_JUMP = 2;
+    int currentAnimationState = STATE_IDLE;
 
     // Start is called before the first frame update
     void Start()
     {
         startingPosition = transform.position;
         SR = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -64,23 +60,37 @@ public class playerScript : MonoBehaviour
         if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded == true)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, JUMP_HEIGHT), ForceMode2D.Impulse);
+            changeStates(STATE_JUMP);
         }
-
+        
         //Code to Flip Sprite Based on Direction
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             if (SR != null)
             {
                 SR.flipX = true;
+                changeStates(STATE_RUN);
+
             }
         }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow))
         {
             if (SR != null)
             {
                 SR.flipX = false;
+                changeStates(STATE_RUN);
+
             }
         }
+        //to set to idle
+        else
+        {
+            if(isGrounded == true)
+            {
+                changeStates(STATE_IDLE);
+            }
+        }
+
 
         // Footstep code
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
@@ -99,6 +109,7 @@ public class playerScript : MonoBehaviour
         if (transform.position.y <= -10)
         {
             transform.position = startingPosition;
+            changeStates(STATE_IDLE);
         }
 
         else
@@ -108,10 +119,25 @@ public class playerScript : MonoBehaviour
         }
 
     }
-    /*
-    void changeStates(state)
+    
+
+    //changes the player animation state
+    public void changeStates(int state)
     {
-        
+        if (currentAnimationState == state)
+            return;
+        switch(state)
+        {
+            case STATE_RUN:
+                animator.SetInteger("state", STATE_RUN);
+                break;
+            case STATE_IDLE:
+                animator.SetInteger("state", STATE_IDLE);
+                break;
+            case STATE_JUMP:
+                animator.SetInteger("state", STATE_JUMP);
+                break;
+        }
+        currentAnimationState = state;
     }
-    */
 }

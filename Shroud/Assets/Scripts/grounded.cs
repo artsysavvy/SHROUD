@@ -27,6 +27,7 @@ public class grounded : MonoBehaviour
         if (collision.collider.tag == "Platform")
         {
             Player.GetComponent<playerScript>().isGrounded = true;
+            Player.GetComponent<playerScript>().changeStates(0);
         }
         // Calling the collision logic for the object that was collided with
         if (collision.collider.gameObject.GetComponent<onCollision>())
