@@ -17,7 +17,7 @@ public class SceneSwitch : MonoBehaviour
     void Update()
     {
 
-        if (nextLevel > 1)
+        if (nextLevel > 1 && nextLevel!= 4)
         {
             if (Door.instance.changeScene)
             {
@@ -25,6 +25,13 @@ public class SceneSwitch : MonoBehaviour
             }
         }
         else if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(nextLevel);
+            }
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
